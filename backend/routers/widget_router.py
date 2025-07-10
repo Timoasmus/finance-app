@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 import logging
-from backend.utils.helper_functions import get_current_user, raise_http500_exception
+from utils.helper_functions import get_current_user, raise_http500_exception
 from bson import ObjectId
 from dotenv import load_dotenv
 import os
 from pymongo import MongoClient
-from backend.models.api_models import Widgets
+from models.api_models import Widgets
 
 logging.basicConfig(
     level=logging.INFO

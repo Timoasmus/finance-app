@@ -1,16 +1,16 @@
 from fastapi import APIRouter, HTTPException, Depends
-from backend.models.api_models import (TransactionOut, NewTransaction, Total,
+from models.api_models import (TransactionOut, NewTransaction, Total,
                             ByCategory, ByDate, Budget, BudgetUpdate)
 import os
 from dotenv import load_dotenv
 from pymongo import MongoClient
 import logging
 from datetime import datetime
-from backend.utils.helper_functions import (get_current_user, set_cache, get_from_cache, 
+from utils.helper_functions import (get_current_user, set_cache, get_from_cache, 
                                delete_cache, get_cache_key, raise_http500_exception, check_premium)
 from bson import ObjectId
 from typing import Optional
-from backend.utils.aggregations import (filter_by_month, aggregation_by_category, aggregation_by_date,
+from utils.aggregations import (filter_by_month, aggregation_by_category, aggregation_by_date,
                                   aggregation_saldo, aggregation_total, aggregation_total_expense,
                                   aggregation_transactions)
 import sentry_sdk

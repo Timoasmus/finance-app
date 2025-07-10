@@ -1,17 +1,17 @@
 from fastapi import APIRouter, Depends, HTTPException, status, Cookie
 from fastapi.security import OAuth2PasswordRequestForm
 from fastapi.responses import Response
-from backend.models.auth_models import NewUser, Plan, Auth, ChangeSubscriptionRequest
-from backend.models.api_models import Widgets
+from models.auth_models import NewUser, Plan, Auth, ChangeSubscriptionRequest
+from models.api_models import Widgets
 from dotenv import load_dotenv
 import os
 from pymongo import MongoClient
 from passlib.context import CryptContext
-from backend.utils.helper_functions import raise_http500_exception
+from utils.helper_functions import raise_http500_exception
 import logging
 from datetime import timedelta, datetime
 from jose import jwt, JWTError
-from backend.utils.helper_functions import decode_token, get_current_user
+from utils.helper_functions import decode_token, get_current_user
 from bson import ObjectId
 import sentry_sdk
 

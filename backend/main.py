@@ -1,9 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
-from backend.routers.api_router import router as api_router
-from backend.routers.auth_router import router as auth_router
-from backend.routers.widget_router import router as widget_router
+from routers.api_router import router as api_router
+from routers.auth_router import router as auth_router
+from routers.widget_router import router as widget_router
 import sentry_sdk
 
 sentry_sdk.init(
