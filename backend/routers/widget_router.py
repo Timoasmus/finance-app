@@ -15,8 +15,8 @@ logger = logging.getLogger("widget-logger")
 
 load_dotenv(override=True)
 
-MONGODB_URI = os.getenv("MONGODB_URI")
-client = MongoClient(MONGODB_URI)
+MONGO_URL = os.getenv("MONGO_URL")
+client = MongoClient(MONGO_URL)
 db = client.get_database("finance-tracker")
 
 router = APIRouter(prefix="/widgets")

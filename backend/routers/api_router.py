@@ -24,9 +24,9 @@ load_dotenv(override=True)
 
 router = APIRouter(prefix="/api")
 
-MONGODB_URI = os.getenv("MONGODB_URI")
+MONGO_URL = os.getenv("MONGO_URL")
 
-client = MongoClient(MONGODB_URI)
+client = MongoClient(MONGO_URL)
 
 db = client.get_database("finance-tracker")
 
