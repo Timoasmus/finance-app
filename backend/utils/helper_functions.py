@@ -1,3 +1,4 @@
+from urllib.parse import urlparse
 from fastapi import HTTPException, status, Cookie
 from jose import jwt, JWTError
 from dotenv import load_dotenv
