@@ -22,7 +22,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 redis_url = os.getenv("REDIS_URL")
 parsed_url = urlparse(redis_url)
 
-r = redis.Redis(
+r = Redis(
     host=parsed_url.hostname, 
     port=parsed_url.port, 
     password=parsed_url.password,
