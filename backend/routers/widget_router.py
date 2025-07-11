@@ -23,7 +23,8 @@ router = APIRouter(prefix="/widgets")
 
 
 @router.get("")
-def get_widgets(user_id: str = Depends(get_current_user)):
+def get_widgets(user: dict = Depends(get_current_user)):
+    user_id = user.get("user_id")
     try:
         doc = db.users.find_one({"_id": ObjectId(user_id)})
         return doc["widgets"]
@@ -33,7 +34,8 @@ def get_widgets(user_id: str = Depends(get_current_user)):
 
 
 @router.put("/remove/{widget}")
-def remove_widget(widget: str, user_id: str = Depends(get_current_user)):
+def remove_widget(widget: str, user: dict = Depends(get_current_user)):
+    user_id = user.get("user_id")
     try:
         user = db.users.find_one({"_id": ObjectId(user_id)})
         widgets = user.get("widgets")
@@ -56,7 +58,8 @@ def remove_widget(widget: str, user_id: str = Depends(get_current_user)):
 
 
 @router.put("/add/{widget}/{loc}")
-def add_widget(widget: str, loc: str, user_id: str = Depends(get_current_user)):
+def add_widget(widget: str, loc: str, user: dict = Depends(get_current_user)):
+    user_id = user.get("user_id")
     try:
         user = db.users.find_one({"_id": ObjectId(user_id)})
         widgets = user.get("widgets")

@@ -115,14 +115,12 @@ def login_user(response: Response, form_data: OAuth2PasswordRequestForm = Depend
     except JWTError as e:
         raise_http500_exception(e)
 
-    logging.info(f"ACCESS TOKEN: {encoded_access_token}")
-    logging.info(f"REFRESH TOKEN: {encoded_refresh_token}")
 
     response.set_cookie(
         key="access_token",
         value=encoded_access_token,
         httponly=True,
-        samesite="lax",  
+        samesite="none",  
         secure=True, 
         max_age=30 * 60,
         path="/"
@@ -132,7 +130,7 @@ def login_user(response: Response, form_data: OAuth2PasswordRequestForm = Depend
         key="refresh_token",
         value=encoded_refresh_token,
         httponly=True,
-        samesite="lax",  
+        samesite="none",  
         secure=True,  
         max_age=12 * 60 * 60,
         path="/")
