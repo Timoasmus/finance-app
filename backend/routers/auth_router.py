@@ -14,6 +14,9 @@ from jose import jwt, JWTError
 from utils.helper_functions import decode_token, get_current_user
 from bson import ObjectId
 import sentry_sdk
+import logging
+
+logging.basicConfig(level=logging.INFO)
 
 logging.basicConfig(
     level=logging.INFO
@@ -111,6 +114,9 @@ def login_user(response: Response, form_data: OAuth2PasswordRequestForm = Depend
 
     except JWTError as e:
         raise_http500_exception(e)
+
+    logging.info(f"ACCESS TOKEN: {encoded_access_token}")
+    logging.info(f"REFRESH TOKEN: {encoded_refresh_token}")
 
     response.set_cookie(
         key="access_token",
